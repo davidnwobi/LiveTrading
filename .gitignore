@@ -1,0 +1,3 @@
+*.log
+oanda.cfg
+vars.env
