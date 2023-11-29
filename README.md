@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Live Trading
 
 ## Introduction
