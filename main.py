@@ -49,13 +49,14 @@ events = q.Queue()
 data_gen = data_generator(data, INITIAL_DATA_POINTS)
 current_data = next(data_gen)
 TSM1 = TradingStratsMark1(events, CURRENCY, current_data, 32, 188)
+sim_execution_handler = SimulatedExecutionHandler(events, data, 100000)
+portfolio = Portfolio(events, sim_execution_handler))
 
 # Setting up VectorbtPro to track and record orders
 order_records = np.empty((len(data), 1), dtype=vbt.pf_enums.order_dt)
 order_counts = np.full(1, 0, dtype=np.int_)
 order_counter = 1
-sim_execution_handler = SimulatedExecutionHandler(events, data, 100000)
-portfolio = Portfolio(events, sim_execution_handler)
+
 
 # Main loop testing on simulated data
 for _ in tqdm(range(0, len(data) - INITIAL_DATA_POINTS - 63000), desc="Progress: "):
